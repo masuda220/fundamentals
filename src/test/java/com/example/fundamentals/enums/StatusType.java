@@ -1,4 +1,4 @@
-package enums;
+package com.example.fundamentals.enums;
 
 public enum StatusType implements Code {
     開始("1"),

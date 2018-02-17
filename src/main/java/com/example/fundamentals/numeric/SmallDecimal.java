@@ -1,4 +1,12 @@
-package numeric;
+package com.example.fundamentals.numeric;
+
+/**
+ * unscaled value が long に収まる数値の扱い
+ * 小数点付きの金額計算を想定
+ *
+ * TODO scale の実装
+ * TODO 丸めモードの実装
+ */
 
 public class SmallDecimal {
 

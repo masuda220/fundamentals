@@ -1,4 +1,4 @@
-package enums;
+package com.example.fundamentals.enums;
 
 import java.util.HashMap;
 import java.util.Map;

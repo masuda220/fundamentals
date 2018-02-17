@@ -1,5 +1,6 @@
-package numeric;
+package com.example.fundamentals.numeric;
 
+import com.example.fundamentals.numeric.SmallDecimal;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
