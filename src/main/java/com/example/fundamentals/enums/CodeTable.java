@@ -3,6 +3,9 @@ package com.example.fundamentals.enums;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * enum がコード値を持つ場合のヘルパークラス
+ */
 public class CodeTable<T extends Enum & Code> {
 
     Map<String, T> map = new HashMap<>();
