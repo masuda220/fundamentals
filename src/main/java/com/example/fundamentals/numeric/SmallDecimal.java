@@ -54,7 +54,7 @@ public class SmallDecimal {
 
         long product = x * y;
         if ( y != 0L && product/y != x )
-            throw new ArithmeticException("倍数 overflow");
+            throw new ArithmeticException("拡張する乗数 overflow");
 
         return new SmallDecimal(product,scale);
     }
@@ -78,29 +78,41 @@ public class SmallDecimal {
     }
 
     // サポートメソッド
-    enum Shift {
-        zero(0),
-        one(1),
-        two(2),
-        three(3),
-        four(4),
-        five(5);
+    enum RaiseSize {
+        zero(1L),
+        one(10L),
+        two(one.拡張する乗数 * 10),
+        three(two.拡張する乗数 * 10),
+        four(three.拡張する乗数 * 10),
+        five(four.拡張する乗数 * 10);
 
-        long 倍数 = 1; // 10 ^ 0
-        long 限界値 = Long.MAX_VALUE;
+        long 拡張する乗数 = 1; // 10 ^ 0
+        long 拡張可能な限界値 = Long.MAX_VALUE/拡張する乗数;
 
-        Shift(int size) {
-            if( size == 0 ) return; // 初期値
+        RaiseSize(long 拡張する乗数) {
+            this.拡張する乗数 = 拡張する乗数;
+            this.拡張可能な限界値 = Long.MAX_VALUE / 拡張する乗数;
+        }
 
-            倍数 = 10 ^ size;
-            限界値 = Long.MAX_VALUE / size;
+        long raise(long value) {
+            System.out.println(拡張する乗数);
+            System.out.println(value);
+            System.out.println(拡張可能な限界値);
+            if (Math.abs(value) <= 拡張可能な限界値) return value * 拡張する乗数;
+
+            throw new ArithmeticException("raiseSize overflow");
+        }
+
+        static RaiseSize[] values = values();
+        static RaiseSize raise(int size) {
+            return values[size];
         }
     }
 
-    long shift(long value, Shift shift) {
-        if (Math.abs(value) <= shift.限界値) return value * shift.倍数;
-
-        throw new ArithmeticException("shift overflow");
+    long raise(long value, int raiseSize) {
+        RaiseSize size = RaiseSize.raise(raiseSize);
+        System.out.println(size);
+        return size.raise(value);
     }
 
     // Factory methods

@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * enum がコード値を持つ場合のヘルパークラス
+ * enum がコード値(文字列)を持つ場合のヘルパークラス
  */
 public class CodeTable<T extends Enum & Code> {
 

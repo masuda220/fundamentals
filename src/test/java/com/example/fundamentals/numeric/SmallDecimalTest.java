@@ -69,4 +69,20 @@ public class SmallDecimalTest {
         SmallDecimal result = six.divide(three);
         assertTrue(result.hasSameValue(two));
     }
+
+    @Test
+    public void raiseSuccess() {
+        max.raise(max.value, 0);
+        long source = (max.value / 10L )  ;
+        max.raise(source, 1);
+    }
+
+    @Test(expected =  ArithmeticException.class)
+    public void raiseOverflow() {
+        max.raise(max.value, 1);
+    }
+    @Test(expected =  ArithmeticException.class)
+    public void raiseOverflowByHundred() {
+        max.raise((max.value/100L) +1 , 2);
+    }
 }
