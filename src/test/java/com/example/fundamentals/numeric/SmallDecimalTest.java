@@ -70,19 +70,30 @@ public class SmallDecimalTest {
         assertTrue(result.hasSameValue(two));
     }
 
+    // unscaled value の拡張
     @Test
-    public void raiseSuccess() {
-        max.raise(max.value, 0);
-        long source = (max.value / 10L )  ;
-        max.raise(source, 1);
+    public void raiseZeroSuccess() {
+        Raise.zero.raise(Long.MAX_VALUE);
+    }
+
+    @Test
+    public void raiseOneSuccess() {
+        long source = (Long.MAX_VALUE / 10L )  ;
+        Raise.one.raise(source);
     }
 
     @Test(expected =  ArithmeticException.class)
-    public void raiseOverflow() {
-        max.raise(max.value, 1);
+    public void raiseOneOverflow() {
+        Raise.one.raise(Long.MAX_VALUE);
     }
+
     @Test(expected =  ArithmeticException.class)
-    public void raiseOverflowByHundred() {
-        max.raise((max.value/100L) +1 , 2);
+    public void raiseTwoOverflow() {
+        Raise.two.raise((Long.MAX_VALUE/100L) + 1);
+    }
+
+    @Test(expected =  ArithmeticException.class)
+    public void raiseTwoNegateOverflow() {
+        Raise.two.raise((Long.MIN_VALUE/100L) - 1 );
     }
 }
