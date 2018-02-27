@@ -1,5 +1,7 @@
 package com.example.fundamentals.numeric;
 
+import java.util.Arrays;
+
 /**
  * unscaled value が long に収まる数値の扱い
  * 小数点付きの金額計算を想定
@@ -13,8 +15,6 @@ public class SmallDecimal {
 
     long value;
     int scale;
-
-
 
     public SmallDecimal(long value, int scale) {
         this.value = value;
@@ -73,9 +73,17 @@ public class SmallDecimal {
         return true;
     }
 
+    public String show() {
+        return String.format("scale:%d, value:%d", scale, value);
+    }
+
+    public String layout() {
+        return new DecimalFormat(this).layout();
+    }
+
     @Override
     public String toString() {
-        return String.format("scale:%d, value:%d", scale, value);
+        return String.valueOf(value);
     }
 
     // サポートメソッド

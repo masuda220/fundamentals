@@ -21,6 +21,35 @@ public class SmallDecimalTest {
     SmallDecimal negateOne = SmallDecimal.of(-1L);
 
     @Test
+    public void show() {
+        System.out.println("one:" + one.show());
+        System.out.println("negate one:" + negateOne.show());
+    }
+
+    @Test
+    public void layout() {
+
+        SmallDecimal extraLarge = new SmallDecimal(123456789L,0);
+        System.out.println(extraLarge.show());
+        System.out.println(extraLarge.layout());
+
+        SmallDecimal large = new SmallDecimal(123456789L,3);
+        System.out.println(large.show());
+        System.out.println(large.layout());
+
+        SmallDecimal medium = new SmallDecimal(1234L,2);
+        System.out.println(medium.show());
+        System.out.println(medium.layout());
+
+        SmallDecimal small = new SmallDecimal(123L,5);
+        System.out.println(small.show());
+        System.out.println(small.layout());
+
+        SmallDecimal negateSmall = new SmallDecimal(-789L,5);
+        System.out.println(negateSmall.show());
+        System.out.println(negateSmall.layout());
+    }
+    @Test
     public void add() {
         SmallDecimal result = one.add(one);
         assertTrue(result.hasSameValue(two));
