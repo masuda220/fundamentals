@@ -4,6 +4,8 @@ import java.time.*;
 import java.time.temporal.TemporalUnit;
 
 public class DateTimes {
+    //TODO instant を生成してから、他の日時を取得するのが正しい？
+    //TOTO epoch time との period, duration 初期化に使う？
     LocalDateTime localDateTime = LocalDateTime.now();
     OffsetDateTime offsetDateTime = OffsetDateTime.from(localDateTime);
     ZonedDateTime zonedDateTime = ZonedDateTime.from(localDateTime);
