@@ -1,4 +1,4 @@
-package com.example.fundamentals.dates;
+package com.example.fundamentals.datetime;
 
 import java.time.LocalDate;
 
