@@ -1,5 +1,8 @@
 package com.example.fundamentals.enums;
 
+/**
+ * コード値を持つ区分（CodeTableの利用例）
+ */
 public enum StatusType implements Code {
     開始("1"),
     終了("2");
@@ -10,7 +13,7 @@ public enum StatusType implements Code {
         this.code = code;
     }
 
-    CodeTable<StatusType> table = new CodeTable<>(StatusType.class);
+    static final CodeTable<StatusType> table = new CodeTable<>(StatusType.class);
     public StatusType forCode(String code){
         return table.lookup(code);
     }
