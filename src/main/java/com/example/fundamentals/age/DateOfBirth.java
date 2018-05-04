@@ -6,10 +6,10 @@ import java.time.Period;
 /**
  * 年齢
  */
-public class Age {
+public class DateOfBirth {
     LocalDate dateOfBirth;
 
-    private Age(LocalDate dateOfBirth) {
+    private DateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 
@@ -27,7 +27,7 @@ public class Age {
         return yearsOld().toString();
     }
 
-    public static Age parse(String dateText) {
-        return new Age(LocalDate.parse(dateText));
+    public static DateOfBirth parse(String dateText) {
+        return new DateOfBirth(LocalDate.parse(dateText));
     }
 }

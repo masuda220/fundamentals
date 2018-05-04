@@ -3,9 +3,9 @@ package com.example.fundamentals.age;
 import com.example.fundamentals.category.Range;
 import org.junit.Test;
 
-public class AgeTest {
+public class AgeCategoryTest {
 
-    Age age = Age.parse("1964-03-21");
+    DateOfBirth age = DateOfBirth.parse("1964-03-21");
     Range<YearOld> 幼児in未満 = Range.未満(YearOld.of(6));
     Range<YearOld> 幼児in以下 = Range.以下(YearOld.of(6));
     Range<YearOld> 大人in以上 = Range.以上(YearOld.of(20));
