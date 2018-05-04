@@ -1,23 +1,18 @@
 package com.example.fundamentals.age;
 
-import com.example.fundamentals.category.Range;
-
-import static com.example.fundamentals.age.AgeThreshold.*;
+import static com.example.fundamentals.age.AgeRange.年齢_20歳以上;
+import static com.example.fundamentals.age.AgeRange.年齢_6歳以上_20歳未満;
+import static com.example.fundamentals.age.AgeRange.年齢_6歳未満;
 
 public enum AgeCategory {
 
-    幼児(六歳.未満()),
-    子供(六歳.以上(), 二十歳.未満()),
-    大人(二十歳.以上());
+    幼児(年齢_6歳未満),
+    子供(年齢_6歳以上_20歳未満),
+    大人(年齢_20歳以上);
 
-    Range<YearOld> range;
+    AgeRange range;
 
-    AgeCategory(Range range) {
+    AgeCategory(AgeRange range) {
         this.range = range;
-    }
-
-    // TODO 合成する
-    AgeCategory(Range lower, Range upper) {
-        this.range = lower;
     }
 }
