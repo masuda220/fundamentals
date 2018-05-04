@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.time.Period;
 
 /**
- * 年齢
+ * 誕生日
  */
 public class DateOfBirth {
     LocalDate dateOfBirth;
