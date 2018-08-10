@@ -7,7 +7,7 @@ class DecimalFormat {
     long value ;
     int scale;
 
-    DecimalFormat( SmallDecimal decimal) {
+    DecimalFormat( Decimal decimal) {
         this.value = decimal.value;
         this.scale = decimal.scale;
     }

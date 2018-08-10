@@ -1,75 +1,73 @@
 package com.example.fundamentals.numeric;
 
-import java.util.Arrays;
-
 /**
  * unscaled value が long に収まる数値の扱い
  * 小数点付きの金額計算を想定
- *
+ * <p>
  * TODO scale の実装
  * TODO 丸めモードの実装
  * TODO toString() の実装
  */
 
-public class SmallDecimal {
+public class Decimal {
 
     long value;
     int scale;
 
-    public SmallDecimal(long value, int scale) {
+    public Decimal(long value, int scale) {
         this.value = value;
         this.scale = scale;
     }
 
-    public SmallDecimal add(SmallDecimal other) {
+    public Decimal add(Decimal other) {
         long x = value;
         long y = other.value;
-        long sum = add(x,y);
+        long sum = add(x, y);
 
-        return new SmallDecimal(sum, scale);
+        return new Decimal(sum, scale);
     }
 
     private long add(long x, long y) {
         long sum = x + y;
-        if ( (((sum ^ x) & (sum ^ y))) >= 0L) return sum; // not overflowed
+        if ((((sum ^ x) & (sum ^ y))) >= 0L) return sum; // not overflowed
 
         throw new ArithmeticException("overflow in add");
     }
 
 
-    public SmallDecimal subtract(SmallDecimal other) {
+    public Decimal subtract(Decimal other) {
         long x = value;
         long y = other.value;
 
         long difference = x - y;
 
-        if ( ((x ^ y) & (difference ^ x) ) >> 63 != 0L )
+        if (((x ^ y) & (difference ^ x)) >> 63 != 0L)
             throw new ArithmeticException("subtract overflow");
 
-        return new SmallDecimal(difference,scale);
+        return new Decimal(difference, scale);
     }
 
-    public SmallDecimal multiply(SmallDecimal other) {
+    public Decimal multiply(Decimal other) {
         long x = value;
         long y = other.value;
 
         long product = x * y;
-        if ( y != 0L && product/y != x )
+        if (y != 0L && product / y != x)
             throw new ArithmeticException("拡張する乗数 overflow");
 
-        return new SmallDecimal(product,scale);
+        return new Decimal(product, scale);
     }
 
-    public SmallDecimal divide(SmallDecimal other) {
+    public Decimal divide(Decimal other) {
         //TODO 割り切れない場合
         long x = value;
         long y = other.value;
 
-        return new SmallDecimal(x / y, scale);
+        return new Decimal(x / y, scale);
     }
 
-    public boolean hasSameValue(SmallDecimal other) {
-        if( value != other.value) return false;
+    public boolean hasSameValue(Decimal other) {
+        if (value != other.value) return false;
         return true;
     }
 
@@ -95,12 +93,12 @@ public class SmallDecimal {
     }
 
     // Factory methods
-    static public SmallDecimal of(int value) {
-        return new SmallDecimal(value, 0);
+    static public Decimal of(int value) {
+        return new Decimal(value, 0);
     }
 
-    static public SmallDecimal of(long value) {
-        return new SmallDecimal(value, 0);
+    static public Decimal of(long value) {
+        return new Decimal(value, 0);
     }
 
 
